@@ -27,7 +27,7 @@ func main() {
 	fmt.Println("start at port:", os.Getenv("PORT"))
 	db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	if err != nil {
-		log.Fatal("can't create table", err)
+		log.Fatal("Can't connection to db", err)
 	}
 	createTb := `
 	CREATE TABLE IF NOT EXISTS expenses (
@@ -40,7 +40,7 @@ func main() {
 	`
 	_, err = db.Exec(createTb)
 	if err != nil {
-		log.Fatal("can't create table", err)
+		log.Fatal("Can't create table ", err)
 	}
 	h := handler.NewApplication(db)
 	e := echo.New()
