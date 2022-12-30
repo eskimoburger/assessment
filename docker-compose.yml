@@ -9,14 +9,17 @@ services:
       - POSTGRES_DB=go-example-db
     ports:
       - "5432:5432"
+   
   app:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "2565:2565"
-    env_file:
-      - .env
+    environment:
+      - DATABASE_URL=postgresql://root:root@db/go-example-db?sslmode=disable
+      - PORT=:2565 
+      - Authorization=November 10, 2009
     depends_on:
       - db
     restart: "on-failure"
