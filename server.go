@@ -29,4 +29,5 @@ func main() {
 	if err != nil {
 		log.Fatal("can't create table", err)
 	}
+
 }
