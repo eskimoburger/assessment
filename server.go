@@ -35,6 +35,7 @@ func main() {
 	e := echo.New()
 
 	e.POST("/expenses", h.CreateExpenseHandler)
+	e.GET("/expenses/:id", h.GetExpenseByIDHandler)
 
 	log.Fatal(e.Start(os.Getenv("PORT")))
 
